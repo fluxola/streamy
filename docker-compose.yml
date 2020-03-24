@@ -48,8 +48,7 @@ services:
   #   labels:
   #     - "traefik.enable=false"            
 volumes:
-  traefik-log: {}
-  restreamerdb: {}
+  restreamerdb:
 networks:
   net:
   traefik_proxy:
