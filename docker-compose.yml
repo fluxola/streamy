@@ -14,20 +14,20 @@ services:
       - "traefik.imgproxy.frontend.rule=Host:stream.uprootx.com"   
       - "traefik.imgproxy.frontend.entryPoints=http,https"
       - "traefik.docker.network=net" 
-  # restreamer:
-  #   image: datarhei/restreamer:latest
-  #   restart: always
-  #   environment: 
-  #     - RS_USERNAME=${RS_USERNAME}
-  #     - RS_PASSWORD=${RS_PASSWORD}
-  #     - RS_TOKEN=${RS_TOKEN}
-  #   ports:
-  #     - '1935:1935'
-  #     - '8080:8080'
-  #   volumes:
-  #     - restreamerdb
-  #   labels:
-  #     - "traefik.enable=false"      
+  restreamer:
+    image: datarhei/restreamer:latest
+    restart: always
+    environment: 
+      - RS_USERNAME=${RS_USERNAME}
+      - RS_PASSWORD=${RS_PASSWORD}
+      - RS_TOKEN=${RS_TOKEN}
+    ports:
+      - '1935:1935'
+      - '8080:8080'
+    volumes:
+      - restreamerdb
+    labels:
+      - "traefik.enable=false"      
   traefik:
     container_name: traefik
     restart: unless-stopped
