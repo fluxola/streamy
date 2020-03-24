@@ -26,6 +26,8 @@ services:
       - '8080:8080'
     volumes:
       - restreamerdb
+    labels:
+      - "traefik.enable=false"      
   traefik:
     container_name: traefik
     restart: unless-stopped
