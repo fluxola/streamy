@@ -6,4 +6,4 @@ just a way to stream
 
 - Docker
 - docker-compose
-- 
+- node
