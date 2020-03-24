@@ -28,21 +28,21 @@ services:
       - '8080:8080'
     volumes:
       - restreamerdb
-  # traefik:
-  #   container_name: traefik
-  #   restart: unless-stopped
-  #   image: traefik:v1.7
-  #   command:
-  #       --configFile=/var/traefik/traefik.toml
-  #   ports:
-  #     - "445:443"
-  #     - "82:80"
-  #   networks:
-  #     - net
-  #   volumes:
-  #     - /var/run/docker.sock:/var/run/docker.sock
-  #     - ./traefik.toml:/var/traefik/traefik.toml:ro
-  #     - traefik-log:/log    
+  traefik:
+    container_name: traefik
+    restart: unless-stopped
+    image: traefik:v1.7
+    command:
+        --configFile=/var/traefik/traefik.toml
+    ports:
+      - "445:443"
+      - "82:80"
+    networks:
+      - net
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik.toml:/var/traefik/traefik.toml:ro
+      - traefik-log:/log    
 volumes:
   traefik-log: {}
   restreamerdb: {}
