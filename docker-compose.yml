@@ -50,4 +50,4 @@ volumes:
   restreamerdb: {}
 networks:
   net:
-  traefik_proxy 
+  traefik_proxy:
