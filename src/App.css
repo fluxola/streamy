@@ -1,0 +1,27 @@
+.App {
+  text-align: center;
+  background-color: #333333;
+  font-family: 'Ubuntu', sans-serif;
+
+}
+
+.App-header {
+  background-color: #333333;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+
+.Body {
+  background-color: black;
+}
+
+.Footer {
+  background-color: #333333;
+}

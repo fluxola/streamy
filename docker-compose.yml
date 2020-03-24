@@ -1,0 +1,50 @@
+# This is specific to my environment, modify it as needed.
+
+version: '3.7'
+services:
+  app:
+    image: nginx
+    restart: always
+    volumes:
+      - ./build:/usr/share/nginx/html
+    labels:
+      - "traefik.enable=true"
+      - "traefik.imgproxy.port=80"
+      - "traefik.imgproxy.backend=app"
+      - "traefik.imgproxy.frontend.rule=Host:stream.uprootx.com"   
+      - "traefik.imgproxy.frontend.entryPoints=http,https"
+      - "traefik.docker.network=net"
+    ports:
+      - '80:80'      
+  restreamer:
+    image: datarhei/restreamer:latest
+    restart: always
+    environment: 
+      - RS_USERNAME=${RS_USERNAME}
+      - RS_PASSWORD=${RS_PASSWORD}
+      - RS_TOKEN=${RS_TOKEN}
+    ports:
+      - '1935:1935'
+      - '8080:8080'
+    volumes:
+      - restreamerdb
+  # traefik:
+  #   container_name: traefik
+  #   restart: unless-stopped
+  #   image: traefik:v1.7
+  #   command:
+  #       --configFile=/var/traefik/traefik.toml
+  #   ports:
+  #     - "445:443"
+  #     - "82:80"
+  #   networks:
+  #     - net
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #     - ./traefik.toml:/var/traefik/traefik.toml:ro
+  #     - traefik-log:/log    
+volumes:
+  traefik-log: {}
+  restreamerdb: {}
+networks:
+  net:         
