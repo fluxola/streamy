@@ -26,5 +26,5 @@ acmeLogging = true
  
 [docker]
 endpoint = "unix:///var/run/docker.sock"
-watch = false
-exposedbydefault = false
+watch = true
+exposedbydefault = true
