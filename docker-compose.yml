@@ -25,7 +25,7 @@ services:
       - RS_TOKEN=${RS_TOKEN}
     ports:
       - '1935:1935'
-      - '8080:8080'
+      - '8111:8080'
     volumes:
       - restreamerdb
     labels:
