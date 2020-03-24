@@ -13,9 +13,7 @@ services:
       - "traefik.imgproxy.backend=app"
       - "traefik.imgproxy.frontend.rule=Host:stream.uprootx.com"   
       - "traefik.imgproxy.frontend.entryPoints=http,https"
-      - "traefik.docker.network=net"
-    ports:
-      - '80:80'      
+      - "traefik.docker.network=net" 
   restreamer:
     image: datarhei/restreamer:latest
     restart: always
