@@ -23,13 +23,19 @@ services:
       - RS_USERNAME=${RS_USERNAME}
       - RS_PASSWORD=${RS_PASSWORD}
       - RS_TOKEN=${RS_TOKEN}
+    networks: 
+      - traefik_proxy
     ports:
       - '1935:1935'
-      - '8111:8080'
     volumes:
       - restreamerdb:/restreamer/db
     labels:
-      - "traefik.enable=false"      
+      - "traefik.enable=true"
+      - "traefik.imgproxy.port=8080"
+      - "traefik.imgproxy.backend=restreamer"
+      - "traefik.imgproxy.frontend.rule=Host:restreamer.uprootx.com"   
+      - "traefik.imgproxy.frontend.entryPoints=http,https"
+      - "traefik.docker.network=net" 
   # traefik:
   #   container_name: traefik
   #   restart: unless-stopped
