@@ -9,10 +9,10 @@ services:
       - ./build:/usr/share/nginx/html
     labels:
       - "traefik.enable=true"
-      - "traefik.imgproxy.port=80"
-      - "traefik.imgproxy.backend=app"
-      - "traefik.imgproxy.frontend.rule=Host:stream.uprootx.com"   
-      - "traefik.imgproxy.frontend.entryPoints=http,https"
+      - "traefik.app.port=80"
+      - "traefik.app.backend=app"
+      - "traefik.app.frontend.rule=Host:live.uprootx.com"   
+      - "traefik.app.frontend.entryPoints=http,https"
       - "traefik.docker.network=net" 
     networks:
       - traefik_proxy
@@ -27,15 +27,15 @@ services:
       - traefik_proxy
     ports:
       - '1935:1935'
-      - "8100:8080"
+      - "8111:8080"
     volumes:
       - restreamerdb:/restreamer/db
     labels:
       - "traefik.enable=true"
-      - "traefik.imgproxy.port=8080"
-      - "traefik.imgproxy.backend=restreamer"
-      - "traefik.imgproxy.frontend.rule=Host:restreamer.uprootx.com"   
-      - "traefik.imgproxy.frontend.entryPoints=http,https"
+      - "traefik.restreamer.port=8080"
+      - "traefik.restreamer.backend=restreamer"
+      - "traefik.restreamer.frontend.rule=Host:restreamer.uprootx.com"   
+      - "traefik.restreamer.frontend.entryPoints=http,https"
       - "traefik.docker.network=net" 
   traefik:
     container_name: traefik
@@ -51,12 +51,14 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik.toml:/var/traefik/traefik.toml:ro
-      - traefik-log:/log    
+      - traefik-log:/log
+      - traefik-certs:/etc/traefik/acme    
     labels:
       - "traefik.enable=false"            
 volumes:
   restreamerdb:
   traefik-log:
+  traefik-certs:
 networks:
   net:
   traefik_proxy:
