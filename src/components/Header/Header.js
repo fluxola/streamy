@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Row, Button, Modal, ModalHeader, ModalBody, ModalFooter, Card, CardImg } from 'reactstrap';
 
 
-import logo from  '../../logo.svg';
+import logo from  '../../onair.png';
 
 
 
