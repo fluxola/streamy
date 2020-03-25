@@ -27,6 +27,7 @@ services:
       - traefik_proxy
     ports:
       - '1935:1935'
+      - "8100:8080"
     volumes:
       - restreamerdb:/restreamer/db
     labels:
