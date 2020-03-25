@@ -15,7 +15,7 @@ services:
       - "traefik.app.frontend.entryPoints=http,https"
       - "traefik.docker.network=net" 
     networks:
-      - traefik_proxy
+      - net
   restreamer:
     image: datarhei/restreamer:latest
     restart: always
@@ -24,7 +24,7 @@ services:
       - RS_PASSWORD=${RS_PASSWORD}
       - RS_TOKEN=${RS_TOKEN}
     networks: 
-      - traefik_proxy
+      - net
     ports:
       - '1935:1935'
       - "8111:8080"
@@ -61,4 +61,3 @@ volumes:
   traefik-certs:
 networks:
   net:
-  traefik_proxy:
