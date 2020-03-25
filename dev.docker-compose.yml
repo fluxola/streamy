@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+  app:
+    image: nginx
+    restart: always
+    volumes:
+      - ./build:/usr/share/nginx/html
+    ports:
+      - '8888:80'
+    networks:
+      - net
+  backend:
+    build:
+      context: .
+      dockerfile: php.Dockerfile
+    restart: always
+    volumes: 
+      - ./php-backend:/usr/src/php-backend
+networks:
+  net:
