@@ -55,6 +55,7 @@ services:
       - "traefik.enable=false"            
 volumes:
   restreamerdb:
+  traefik-log:
 networks:
   net:
   traefik_proxy:
