@@ -16,6 +16,7 @@
     "simple": "^0.2.0",
     "simple-flexbox": "^1.2.0"
   },
+  "proxy": "http://localhost:3001",
   "homepage": "./",
   "scripts": {
     "start": "react-scripts start",
