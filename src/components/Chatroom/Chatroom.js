@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Row } from 'reactstrap';
+import { Col, Row, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 
 class Chatroom extends Component {
@@ -23,6 +23,13 @@ class Chatroom extends Component {
     return body;
   };
 
+  handleUpdate = async e => {
+    const response = await fetch('api/chatroom/get')
+      .then(function(data){
+        
+      })
+  }
+
   handleSubmit = async e => {
     e.preventDefault();
     const response = await fetch('/api/chatroom/post', {
@@ -38,29 +45,26 @@ class Chatroom extends Component {
     this.setState({ responseToPost: body });
   };
 
+
+
   render() {
     return (
       <Row className='Chatroom'>
         <Col sm="12" md={{ size: 6, offset: 4 }} style={{paddingTop: "48px", paddingBottom: "48px"}}>
-          <form onSubmit={this.handleSubmit}>
-            <p>
-              <strong>Post to Server</strong>
-            </p>
-            <input
-             type="text"
-             value={this.state.userName}
-             onChange={e => this.setState({userName: e.target.value })}
-            />             
-            <input
-             type="text"
-             value={this.state.post}
-             onChange={e => this.setState({post: e.target.value })}
-            /> 
-            <button type="submit">Submit</button>
-          </form>
-          <p>{this.state.responseToPost}</p>
-        </Col>
-      </Row>
+          <Form onSubmit={this.handleSubmit}>
+            <p>{this.state.responseToPost}</p>
+            <FormGroup>
+              <Label>Screen name</Label>
+              <Input type="text" value={this.state.userName} onChange={e => this.setState({userName: e.target.value})}></Input>
+            </FormGroup>
+            <FormGroup>
+              <Label>Message</Label>
+              <Input type="text" value={this.state.post} onChange={e => this.setState({post: e.target.value})}></Input>
+            </FormGroup>
+            <Button type="submit">Send</Button>
+          </Form>
+        </Col>        
+      </Row>      
     )
   }
 }
