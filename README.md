@@ -27,3 +27,8 @@ Run:
 docker-compose -f dev.docker-compose.yml down
 ```
 to clean up old containers
+
+
+
+
+Fetch API on the client

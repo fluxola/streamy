@@ -5,6 +5,7 @@ services:
     restart: always
     volumes:
       - ./build:/usr/share/nginx/html
+      - 
     ports:
       - '8888:80'
     networks:

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Header from './components/Header/Header';
 import Body from './components/Body/Body';
 import Footer from './components/Footer/Footer';
+import Chatroom from './components/Chatroom/Chatroom';
 
 
 
@@ -14,6 +15,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <Body />
+        <Chatroom />
         <Footer />
       </div>
     );
